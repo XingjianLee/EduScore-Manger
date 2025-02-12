@@ -42,8 +42,8 @@ class GradeStatistics(BaseModel):
 
 # 初始化OpenAI客户端
 client = OpenAI(
-    api_key="sk-Y3BU8GtMz4xUmax0jlHEaSprGooS2rj9KaJoAovnizA0hiRz",
-    base_url="https://tbnx.plus7.plus/v1"
+    api_key="your api key",
+    base_url="your api url"
 )
 
 @router.get("/course/{course_id}/grades")
