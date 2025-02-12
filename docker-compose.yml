@@ -1,0 +1,31 @@
+version: '3'
+services:
+  app:
+    build: .
+    ports:
+      - '8001:8001'
+    environment:
+      - DATABASE_URL=mysql+pymysql://user:password@db:3306/edu_score
+    depends_on:
+      - db
+    networks:
+      - app-network
+
+  db:
+    image: mysql:8.0
+    environment:
+      - MYSQL_ROOT_PASSWORD=rootpassword
+      - MYSQL_DATABASE=edu_score
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=password
+    volumes:
+      - db-data:/var/lib/mysql
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  db-data:
